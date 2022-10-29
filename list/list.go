@@ -1,61 +1,15 @@
-package main
+package list
 
 import (
 	"errors"
 	"fmt"
 )
 
-func main() {
-	l := new()
-	count := l.count()
-	fmt.Printf("count: %v\n", count)
-
-	fmt.Println("append 10 at tail")
-	l.insert(-1, 10)
-	fmt.Println(l)
-	fmt.Println("append 11 at tail")
-	l.insert(-1, 11)
-	fmt.Println(l)
-	fmt.Println("append 12 at tail")
-	l.insert(-1, 12)
-	fmt.Println(l)
-	fmt.Println("insert 9 at 0")
-	l.insert(0, 9)
-	fmt.Println(l)
-	fmt.Println("insert 9 at 1")
-	l.insert(1, 9)
-	fmt.Println(l)
-	fmt.Println("remove at 1")
-	err := l.remove(1)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(l)
-	fmt.Println("append 13 at tail")
-	l.insert(-1, 13)
-	fmt.Println(l)
-	fmt.Println("set 8 at 1")
-	l.set(1, 8)
-	fmt.Println(l)
-
-	fmt.Println("get at 0")
-	first, err := l.get(0)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Printf("first: %v\n", first)
-	}
-	fmt.Println("get at 10000")
-	_, err = l.get(10000)
-	if err != nil {
-		fmt.Println(err)
-	}
-}
-
 const (
 	length int = 1
 )
 
+// list is a type for basic list
 type list struct {
 	a   []int
 	end int
@@ -129,4 +83,53 @@ func (l *list) remove(poi int) error {
 	l.end--
 
 	return nil
+}
+
+func Test() {
+	fmt.Println("------list------")
+	l := new()
+	count := l.count()
+	fmt.Printf("count: %v\n", count)
+
+	fmt.Println("append 10 at tail")
+	l.insert(-1, 10)
+	fmt.Println(l)
+	fmt.Println("append 11 at tail")
+	l.insert(-1, 11)
+	fmt.Println(l)
+	fmt.Println("append 12 at tail")
+	l.insert(-1, 12)
+	fmt.Println(l)
+	fmt.Println("insert 9 at 0")
+	l.insert(0, 9)
+	fmt.Println(l)
+	fmt.Println("insert 9 at 1")
+	l.insert(1, 9)
+	fmt.Println(l)
+	fmt.Println("remove at 1")
+	err := l.remove(1)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(l)
+	fmt.Println("append 13 at tail")
+	l.insert(-1, 13)
+	fmt.Println(l)
+	fmt.Println("set 8 at 1")
+	l.set(1, 8)
+	fmt.Println(l)
+
+	fmt.Println("get at 0")
+	first, err := l.get(0)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("first: %v\n", first)
+	}
+	fmt.Println("get at 10000")
+	_, err = l.get(10000)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("------list end------")
 }
